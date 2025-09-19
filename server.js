@@ -2,11 +2,25 @@ const express = require("express");
 const app = express();
 const database = require("./database")
 
+// implement later
+// const mysql = require("mysql2");
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'Moondarling2!',
+//     database: 'notes'
+// });
+
 app.set("view engine", "ejs")
 app.use(express.urlencoded({extended: true}))
+// Serve static assets from the 'public' folder (CSS, JS, images)
+app.use(express.static("public"))
 
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    const notes = database.getNotes();
+    res.render("notes.ejs", {
+        notes
+    })
 });
 
 app.get("/goodbye", (req, res) => {
@@ -50,6 +64,12 @@ app.post("/notes", (req, res) => {
     database.createNote(data);
 
     res.redirect("/notes");
+})
+
+app.post("/notes/:id/delete", (req, res) => {
+    const id = +req.params.id
+    database.deleteNote(id)
+    res.redirect("/notes")
 })
 
 const port = 8080;

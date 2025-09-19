@@ -43,3 +43,8 @@ function createNote(note) {
     })
 }
 exports.createNote = createNote
+
+function deleteNote(id) {
+    notes = notes.filter((note) => note.id !== id);
+}
+exports.deleteNote = deleteNote

@@ -1,0 +1,26 @@
+body {
+    background-color: lightpink;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    padding-left: 30vw;
+    padding-right: 30vw;
+}
+
+img {
+    width: 300px;
+    align-self: center;
+    justify-self: center;
+}
+
+#create-note-button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ff69b4;
+    text-align: center;
+    border-radius: 5px;
+    a {
+        color: white;
+        text-decoration: none;
+    }
+}

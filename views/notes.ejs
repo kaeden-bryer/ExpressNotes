@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
     <title>Express Notes</title>
 </head>
 <body>
     <h1>Express Notes</h1>
+    <h3 style="display:flex; justify-self:left">By Kaeden Bryer</h3>
+
+    <img src="/images/sanrio_hearts.jpeg" alt="Hearts">
     <% notes.forEach(note => { %>
     <h2><%= note.title %></h2>
     <p><%= note.contents.substring(0, 200) %>...</p>
     <a href="/notes/<%= note.id %>">View More</a>
     <% }) %>
-
-    <a href="/createNote">Create a New Note</a>
+    
+    <div id="create-note-button">
+        <a href="/createNote">Create a New Note</a>
+    </div>
 </body>
 </html>
