@@ -34,3 +34,12 @@ function getNote(id) {
     return notes.find((note) => note.id === id);
 }
 exports.getNote = getNote
+
+function createNote(note) {
+    notes.push({
+        ...note,
+        id: notes.length + 1,
+        date: Date.now(),
+    })
+}
+exports.createNote = createNote

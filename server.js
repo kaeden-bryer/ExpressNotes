@@ -41,6 +41,17 @@ app.get("/notes/:id", (req, res) => {
     });
 })
 
+app.get("/createNote", (req, res) => {
+    res.render("createNote.ejs")
+})
+
+app.post("/notes", (req, res) => {
+    const data = req.body;
+    database.createNote(data);
+
+    res.redirect("/notes");
+})
+
 const port = 8080;
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
