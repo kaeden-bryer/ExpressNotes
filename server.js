@@ -55,6 +55,29 @@ app.get("/notes/:id", (req, res) => {
     });
 })
 
+app.get("/notes/:id/edit", (req, res) => {
+    const id = +req.params.id;
+    const note = database.getNote(id)
+
+    if (!note) {
+        res.status(404).render("note404.ejs")
+        return
+    }
+
+    res.render("editNote.ejs", {
+        note,
+    });
+})
+
+app.post("/notes/:id/edit", (req, res) => {
+    const id = +req.params.id;
+    const updatedData = req.body;
+
+    database.updateNote(id, updatedData);
+
+    res.redirect(`/notes`);
+})
+
 app.get("/createNote", (req, res) => {
     res.render("createNote.ejs")
 })

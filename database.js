@@ -25,6 +25,8 @@ let notes = [
     },
 ]
 
+let nextId = 5;
+
 function getNotes() {
     return notes;
 }
@@ -38,7 +40,7 @@ exports.getNote = getNote
 function createNote(note) {
     notes.push({
         ...note,
-        id: notes.length + 1,
+        id: nextId++,
         date: Date.now(),
     })
 }
@@ -48,3 +50,14 @@ function deleteNote(id) {
     notes = notes.filter((note) => note.id !== id);
 }
 exports.deleteNote = deleteNote
+
+function updateNote(id, updatedNote) {
+    const noteIndex = notes.findIndex((note) => note.id === id);
+    if (noteIndex !== -1) {
+        notes[noteIndex] = {
+            ...notes[noteIndex],
+            ...updatedNote,
+        }
+    }
+}
+exports.updateNote = updateNote
