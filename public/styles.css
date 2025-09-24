@@ -13,7 +13,7 @@ img {
     justify-self: center;
 }
 
-#create-note-button {
+.button {
     margin-top: 20px;
     padding: 10px;
     background-color: #ff69b4;
@@ -23,4 +23,16 @@ img {
         color: white;
         text-decoration: none;
     }
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ff69b4;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    width: 100%;
+    cursor: pointer;
 }
